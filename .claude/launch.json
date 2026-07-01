@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "o-servus-dev",
+      "runtimeExecutable": "/bin/bash",
+      "runtimeArgs": ["-lc", "source ~/.nvm/nvm.sh && nvm use 22.23.1 && exec pnpm run start"],
+      "port": 4200
+    }
+  ]
+}

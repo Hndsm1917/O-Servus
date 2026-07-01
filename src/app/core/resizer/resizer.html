@@ -1,0 +1,9 @@
+@if (showDebug) {
+  <div class="resize__debug">
+    @for (entry of debugEntries(); track entry.key) {
+      <span class="resize__font">{{ entry.key }}: {{ entry.value }}</span>
+    }
+  </div>
+}
+
+<ng-content></ng-content>
