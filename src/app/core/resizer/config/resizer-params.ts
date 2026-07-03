@@ -31,7 +31,7 @@ const resizerParams: ResizerParams = {
     minWidth: 1280,
     minHeight: 720,
     maxWidth: Infinity,
-    fontSize: 10
+    fontSize: 16
   }
 };
 

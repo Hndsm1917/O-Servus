@@ -1,0 +1,25 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25em 0.75em;
+  border-radius: var(--radius-pill);
+  color: var(--text-danger);
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  background: var(--bg-danger);
+
+  &--success {
+    color: var(--text-success);
+    background: var(--bg-success);
+  }
+
+  &--warning {
+    color: var(--text-warning);
+    background: var(--bg-warning);
+  }
+
+  &--neutral {
+    color: var(--color-text-secondary);
+    background: var(--color-surface-sunken);
+  }
+}

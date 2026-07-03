@@ -1,0 +1,28 @@
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375em;
+  padding: 0.375em 0.875em;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-pill);
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-base);
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  background: var(--color-surface);
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+
+  &:hover {
+    border-color: var(--color-text-secondary);
+  }
+
+  &--active {
+    border-color: var(--border-accent);
+    color: var(--text-accent);
+    background: var(--bg-accent);
+  }
+}

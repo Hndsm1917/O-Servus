@@ -1,0 +1,13 @@
+<nav class="dev-nav" aria-label="Dev navigation">
+  <span class="badge badge--warning">DEV</span>
+
+  @for (link of links; track link.path) {
+    <a
+      class="dev-nav__link"
+      routerLinkActive="dev-nav__link--active"
+      [routerLinkActiveOptions]="{ exact: link.exact }"
+      [routerLink]="link.path"
+      >{{ link.label }}</a
+    >
+  }
+</nav>

@@ -1,0 +1,145 @@
+<section class="style-guide">
+  <header class="style-guide__intro">
+    <h1 class="style-guide__title">UI Kit</h1>
+    <p class="style-guide__lead">Референс компонентов O-Servus: цвет, типографика и базовые UI-элементы.</p>
+  </header>
+
+  <section class="style-guide__section">
+    <h2 class="style-guide__heading">Цвет</h2>
+    <div class="style-guide__row">
+      <div class="style-guide__group">
+        <h3 class="style-guide__subheading">Red</h3>
+        <div class="style-guide__swatches">
+          @for (swatch of redSwatches; track swatch.token) {
+            <div class="style-guide__swatch" [style.background]="'var(' + swatch.token + ')'">
+              <span class="style-guide__swatch-label" [class.style-guide__swatch-label--light]="swatch.dark">{{
+                swatch.label
+              }}</span>
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="style-guide__group">
+        <h3 class="style-guide__subheading">Graphite</h3>
+        <div class="style-guide__swatches">
+          @for (swatch of graphiteSwatches; track swatch.token) {
+            <div class="style-guide__swatch" [style.background]="'var(' + swatch.token + ')'">
+              <span class="style-guide__swatch-label" [class.style-guide__swatch-label--light]="swatch.dark">{{
+                swatch.label
+              }}</span>
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="style-guide__group">
+        <h3 class="style-guide__subheading">Semantic</h3>
+        <div class="style-guide__swatches">
+          @for (swatch of semanticSwatches; track swatch.token) {
+            <div class="style-guide__swatch" [style.background]="'var(' + swatch.token + ')'">
+              <span class="style-guide__swatch-label" [class.style-guide__swatch-label--light]="swatch.dark">{{
+                swatch.label
+              }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="style-guide__section">
+    <h2 class="style-guide__heading">Типографика</h2>
+    <p class="style-guide__type" style="font-size: var(--fs-display)">Display</p>
+    <p class="style-guide__type" style="font-size: var(--fs-h1)">Heading 1</p>
+    <p class="style-guide__type" style="font-size: var(--fs-h2)">Heading 2</p>
+    <p class="style-guide__type" style="font-size: var(--fs-h3)">Heading 3</p>
+    <p class="style-guide__type" style="font-size: var(--fs-h4)">Heading 4</p>
+    <p class="style-guide__type" style="font-size: var(--fs-h5)">Heading 5</p>
+    <p class="style-guide__type" style="font-size: var(--fs-h6)">Heading 6</p>
+    <p class="style-guide__type" style="font-size: var(--fs-body-lg)">Body large — текст среднего размера для лидов.</p>
+    <p class="style-guide__type" style="font-size: var(--fs-body)">Body — основной текст интерфейса.</p>
+    <p class="style-guide__type" style="font-size: var(--fs-caption)">Caption — подписи и вспомогательный текст.</p>
+  </section>
+
+  <section class="style-guide__section">
+    <h2 class="style-guide__heading">Кнопки</h2>
+    <div class="style-guide__row">
+      <button class="btn btn--primary" type="button">Primary</button>
+      <button class="btn btn--secondary" type="button">Secondary</button>
+      <button class="btn btn--ghost" type="button">Ghost</button>
+      <button class="btn btn--primary" type="button" disabled>Disabled</button>
+    </div>
+  </section>
+
+  <section class="style-guide__section style-guide__section--hero">
+    <h2 class="style-guide__heading style-guide__heading--inverse">Карточки</h2>
+    <div class="style-guide__row">
+      <div class="card">
+        <h3 class="card__title">Flat card</h3>
+        <p class="card__text">Обычная карточка на белой поверхности с тонкой границей и мягкой тенью.</p>
+      </div>
+      <div class="card card--glass">
+        <h3 class="card__title">Glass card</h3>
+        <p class="card__text">Полупрозрачная карточка с блюром поверх градиентной подложки.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="style-guide__section">
+    <h2 class="style-guide__heading">Бейджи</h2>
+    <div class="style-guide__row">
+      <span class="badge">New</span>
+      <span class="badge badge--success">Active</span>
+      <span class="badge badge--warning">Pending</span>
+      <span class="badge badge--neutral">Draft</span>
+    </div>
+  </section>
+
+  <section class="style-guide__section">
+    <h2 class="style-guide__heading">Поля ввода</h2>
+    <div class="style-guide__row">
+      <label class="field">
+        <span class="field__label">Имя</span>
+        <input class="field__input" type="text" placeholder="Введите имя" />
+      </label>
+      <label class="field">
+        <span class="field__label">Комментарий</span>
+        <textarea class="field__textarea" placeholder="Ваш текст"></textarea>
+      </label>
+      <label class="field">
+        <span class="field__label">Регион</span>
+        <select class="field__select">
+          <option>Wien</option>
+          <option>Graz</option>
+          <option>Salzburg</option>
+        </select>
+      </label>
+    </div>
+  </section>
+
+  <section class="style-guide__section">
+    <h2 class="style-guide__heading">Слайдер</h2>
+    <input
+      class="range"
+      type="range"
+      min="0"
+      max="100"
+      [value]="sliderValue()"
+      (input)="onSliderInput($event)"
+    />
+    <p class="style-guide__caption">{{ sliderValue() }}</p>
+
+    <div class="slider-dots">
+      @for (dot of dots; track dot) {
+        <button
+          class="slider-dots__dot"
+          [class.slider-dots__dot--active]="dot === activeDot()"
+          type="button"
+          [attr.aria-label]="'Слайд ' + (dot + 1)"
+          (click)="setActiveDot(dot)"
+        ></button>
+      }
+    </div>
+  </section>
+</section>

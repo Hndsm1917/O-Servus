@@ -1,0 +1,17 @@
+// Reusable visual effects for the "modern trends" layer of the UI kit:
+// frosted glass panels and gradient surfaces on top of the token palette.
+
+@mixin glass-panel {
+  background: var(--glass-bg);
+  border: var(--glass-border-width) solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  color: var(--glass-text);
+  // stylelint-disable-next-line property-no-vendor-prefix -- Safari < 15.4 needs the prefix
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+}
+
+@mixin gradient-surface($gradient: var(--gradient-hero)) {
+  background: $gradient;
+  color: var(--color-text-inverse);
+}

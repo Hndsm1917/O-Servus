@@ -1,0 +1,104 @@
+@use '../../../styles/mixins';
+
+.style-guide {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  padding: var(--space-lg);
+
+  &__intro {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+  }
+
+  &__title {
+    margin: 0;
+    font-size: var(--fs-h1);
+    font-weight: 600;
+  }
+
+  &__lead {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-body-lg);
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+
+    &--hero {
+      @include mixins.gradient-surface;
+
+      padding: var(--space-xl);
+      border-radius: var(--radius-lg);
+    }
+  }
+
+  &__heading {
+    margin: 0;
+    font-size: var(--fs-h4);
+    font-weight: 600;
+
+    &--inverse {
+      color: var(--color-text-inverse);
+    }
+  }
+
+  &__subheading {
+    margin: 0 0 var(--space-2xs);
+    color: var(--color-text-secondary);
+    font-size: var(--fs-caption);
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    align-items: flex-start;
+  }
+
+  &__group {
+    min-width: 12em;
+  }
+
+  &__swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs);
+  }
+
+  &__swatch {
+    display: flex;
+    align-items: flex-end;
+    width: 4.5em;
+    height: 4.5em;
+    padding: var(--space-2xs);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-md);
+  }
+
+  &__swatch-label {
+    color: var(--color-graphite-900);
+    font-size: var(--fs-caption);
+    font-weight: 600;
+
+    &--light {
+      color: var(--color-white);
+    }
+  }
+
+  &__type {
+    margin: 0;
+  }
+
+  &__caption {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-caption);
+  }
+}

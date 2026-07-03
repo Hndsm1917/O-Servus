@@ -1,3 +1,7 @@
 <app-resizer>
+  @if (isDevMode) {
+    <app-dev-nav />
+  }
+
   <router-outlet />
 </app-resizer>

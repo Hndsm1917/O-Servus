@@ -1,0 +1,38 @@
+<header class="header">
+  <span class="header__logo">Ö-Servus</span>
+
+  <nav class="header__nav">
+    @for (link of links; track link.path) {
+      <a
+        class="header__link"
+        routerLinkActive="header__link--active"
+        [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+        [routerLink]="link.path"
+      >
+        {{ link.label }}
+      </a>
+    }
+  </nav>
+
+  <div class="header__controls">
+    <button
+      class="toggle"
+      type="button"
+      [class.toggle--active]="theme.theme() === 'dark'"
+      [attr.aria-pressed]="theme.theme() === 'dark'"
+      (click)="theme.toggleTheme()"
+    >
+      {{ theme.theme() === 'dark' ? 'Dark' : 'Light' }}
+    </button>
+
+    <button
+      class="toggle"
+      type="button"
+      [class.toggle--active]="theme.contrast() === 'high'"
+      [attr.aria-pressed]="theme.contrast() === 'high'"
+      (click)="theme.toggleContrast()"
+    >
+      Contrast
+    </button>
+  </div>
+</header>

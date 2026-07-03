@@ -6,6 +6,21 @@
       "runtimeExecutable": "/bin/bash",
       "runtimeArgs": ["-lc", "source ~/.nvm/nvm.sh && nvm use 22.23.1 && exec pnpm run start"],
       "port": 4200
+    },
+    {
+      "name": "o-servus-preview",
+      "runtimeExecutable": "/bin/bash",
+      "runtimeArgs": ["-lc", "source ~/.nvm/nvm.sh && nvm use 22.23.1 && exec ng serve --port 4201"],
+      "port": 4201
+    },
+    {
+      "name": "o-servus-prod-preview",
+      "runtimeExecutable": "/bin/bash",
+      "runtimeArgs": [
+        "-lc",
+        "source ~/.nvm/nvm.sh && nvm use 22.23.1 && npx http-server dist/o-servus/browser -p 4202 -c-1"
+      ],
+      "port": 4202
     }
   ]
 }

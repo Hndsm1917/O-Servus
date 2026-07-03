@@ -1,0 +1,20 @@
+
+
+.app-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+
+  &__copyright {
+    width: 100%;
+    background: var(--color-graphite-100);
+    padding: var(--space-sm) var(--space-lg);
+  }
+
+  &__langs {
+    background: var(--gradient-hero);
+    width: 100%;
+    padding: var(--space-sm) var(--space-lg);
+  }
+}

@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 
-import { environment } from '../../../environments/environment';
 import { ResizerService } from './resizer.service';
 
 @Component({

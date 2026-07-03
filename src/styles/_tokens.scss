@@ -1,0 +1,183 @@
+// Design tokens — Austrian-tinted palette (ÖBB/ÖIF red + graphite neutrals).
+// Two layers:
+// 1. Raw palette — mode-stable hex, rarely referenced outside this file.
+// 2. Purpose tokens — what components actually consume (--color-surface,
+//    --fill-accent, etc). Redefined per [data-theme]/[data-contrast], so
+//    switching theme or contrast never requires touching component SCSS.
+
+:root {
+  // Brand red
+  --color-red-50: #fce8ea;
+  --color-red-100: #f7c2c7;
+  --color-red-200: #ed8790;
+  --color-red-300: #e2515e;
+  --color-red-500: #e2001a;
+  --color-red-600: #c50017;
+  --color-red-700: #a80014;
+  --color-red-900: #6e0010;
+
+  // Graphite neutrals
+  --color-graphite-50: #f7f7f8;
+  --color-graphite-100: #ededef;
+  --color-graphite-200: #d6d6da;
+  --color-graphite-300: #b4b4ba;
+  --color-graphite-400: #8e8e96;
+  --color-graphite-500: #6e6e73;
+  --color-graphite-600: #545458;
+  --color-graphite-700: #3a3a3d;
+  --color-graphite-800: #262628;
+  --color-graphite-900: #171718;
+  --color-white: #fff;
+  --color-black: #000;
+
+  // Heritage gold accent — reserve for rare premium accents, not for UI chrome.
+  --color-gold-500: #c9a227;
+}
+
+// ---- Purpose tokens: light theme (default) ----
+:root {
+  --color-surface: var(--color-white);
+  --color-surface-sunken: var(--color-graphite-50);
+  --color-surface-inverse: var(--color-graphite-900);
+  --color-text-primary: var(--color-graphite-900);
+  --color-text-secondary: var(--color-graphite-600);
+  --color-text-muted: var(--color-graphite-400);
+  --color-text-inverse: var(--color-white);
+  --color-border: var(--color-graphite-200);
+  --border-width: 0.0625em;
+
+  // Accent (brand red), split fill/tint per the CDS bg-vs-fill convention:
+  // fill pairs with on-accent for solid controls, text/bg-accent pair for
+  // tints sitting directly on the page surface — that pair is the one that
+  // needs to shift per theme to keep contrast against --color-surface.
+  --fill-accent: var(--color-red-500);
+  --fill-accent-hover: var(--color-red-600);
+  --fill-accent-active: var(--color-red-700);
+  --on-accent: var(--color-white);
+  --text-accent: var(--color-red-600);
+  --bg-accent: var(--color-red-50);
+  --border-accent: var(--color-red-500);
+
+  // Status
+  --text-success: #1e8e5a;
+  --bg-success: rgb(30 142 90 / 12%);
+  --text-warning: #8a5a03;
+  --bg-warning: rgb(217 142 4 / 14%);
+  --text-danger: var(--text-accent);
+  --bg-danger: var(--bg-accent);
+
+  // Focus ring (WCAG 2.4.7) — always visible, thickens in high-contrast mode.
+  --color-focus-ring: var(--border-accent);
+  --focus-ring-width: 0.125em;
+
+  // Gradients — collapse to a flat surface-inverse fill in high-contrast mode.
+  --gradient-hero: linear-gradient(135deg, var(--color-red-500) 0%, var(--color-graphite-900) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--color-red-300) 0%, var(--color-red-700) 100%);
+
+  // Glass panel — becomes an opaque bordered surface in high-contrast mode.
+  --glass-bg: rgb(255 255 255 / 12%);
+  --glass-border: rgb(255 255 255 / 24%);
+  --glass-blur: blur(1.25em);
+  --glass-border-width: 0.0625em;
+  --glass-text: var(--color-text-inverse);
+  --glass-text-secondary: rgb(255 255 255 / 80%);
+
+  // Typography
+  --font-family-base:
+    -apple-system, blinkmacsystemfont, 'Segoe UI', roboto, helvetica, arial, sans-serif;
+  --fs-caption: 0.75em;
+  --fs-body: 1em;
+  --fs-body-lg: 1.125em;
+  --fs-h6: 1.25em;
+  --fs-h5: 1.5em;
+  --fs-h4: 1.75em;
+  --fs-h3: 2em;
+  --fs-h2: 2.5em;
+  --fs-h1: 3em;
+  --fs-display: 4em;
+
+  // Spacing
+  --space-3xs: 0.25em;
+  --space-2xs: 0.5em;
+  --space-xs: 0.75em;
+  --space-sm: 1em;
+  --space-md: 1.5em;
+  --space-lg: 2em;
+  --space-xl: 3em;
+  --space-2xl: 4em;
+
+  // Radius
+  --radius-sm: 0.25em;
+  --radius-md: 0.5em;
+  --radius-lg: 1em;
+  --radius-pill: 999em;
+
+  // Shadow (flat elevation, distinct from the glass mixin's blur)
+  --shadow-sm: 0 0.125em 0.5em rgb(23 23 24 / 8%);
+  --shadow-md: 0 0.25em 1em rgb(23 23 24 / 12%);
+}
+
+// ---- Purpose tokens: dark theme ----
+// Toggled by ThemeService, which writes data-theme="dark" on <html>.
+:root[data-theme='dark'] {
+  --color-surface: var(--color-graphite-900);
+  --color-surface-sunken: var(--color-graphite-800);
+  --color-surface-inverse: var(--color-white);
+  --color-text-primary: var(--color-graphite-50);
+  --color-text-secondary: var(--color-graphite-300);
+  --color-text-muted: var(--color-graphite-500);
+  --color-text-inverse: var(--color-graphite-900);
+  --color-border: var(--color-graphite-700);
+
+  // Lighter red reads better against a dark surface than the light-theme
+  // red-500/red-600 text pairing, which was tuned for contrast on white.
+  --fill-accent-hover: var(--color-red-300);
+  --fill-accent-active: var(--color-red-200);
+  --text-accent: var(--color-red-300);
+  --bg-accent: rgb(226 81 94 / 16%);
+  --border-accent: var(--color-red-300);
+  --text-success: #4ade95;
+  --bg-success: rgb(74 222 149 / 16%);
+  --text-warning: #f0b429;
+  --bg-warning: rgb(240 180 41 / 16%);
+  --glass-bg: rgb(255 255 255 / 8%);
+  --glass-border: rgb(255 255 255 / 16%);
+  --glass-text: var(--color-white);
+  --glass-text-secondary: rgb(255 255 255 / 72%);
+  --shadow-sm: 0 0.125em 0.5em rgb(0 0 0 / 32%);
+  --shadow-md: 0 0.25em 1em rgb(0 0 0 / 40%);
+}
+
+// ---- High-contrast mode (a11y) ----
+// Toggled by ThemeService, which writes data-contrast="high" on <html>.
+// Applies on top of either theme: flattens gradients/glass, thickens
+// borders and the focus ring, and stops treating secondary text as a
+// deliberately-washed-out tone (WCAG 2.1 AA needs >=4.5:1 for body text).
+:root[data-contrast='high'] {
+  --color-text-secondary: var(--color-text-primary);
+  --color-border: var(--color-text-primary);
+  --border-width: 0.125em;
+  --focus-ring-width: 0.1875em;
+  --gradient-hero: var(--color-surface-inverse);
+  --gradient-accent: var(--color-surface-inverse);
+  --glass-bg: var(--color-surface);
+  --glass-border: var(--color-text-primary);
+  --glass-blur: none;
+  --glass-border-width: var(--border-width);
+  --glass-text: var(--color-text-primary);
+  --glass-text-secondary: var(--color-text-secondary);
+  --shadow-sm: none;
+  --shadow-md: none;
+}
+
+// Pure black/white pairing reads more reliably than graphite-900 once every
+// other surface in the page has already gone flat.
+:root[data-theme='dark'][data-contrast='high'] {
+  --color-surface: var(--color-black);
+  --color-surface-sunken: var(--color-graphite-800);
+  --color-text-primary: var(--color-white);
+  --fill-accent: var(--color-red-300);
+  --on-accent: var(--color-black);
+  --text-accent: var(--color-red-200);
+  --border-accent: var(--color-red-200);
+}
