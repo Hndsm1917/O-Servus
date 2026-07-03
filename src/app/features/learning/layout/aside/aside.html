@@ -1,0 +1,11 @@
+<aside class="aside">
+  <span class="aside__logo">Ö-Servus</span>
+
+  <nav class="aside__nav">
+    @for (link of links; track link.path) {
+      <a class="aside__link" routerLinkActive="aside__link--active" [routerLink]="link.path">{{
+        link.label
+      }}</a>
+    }
+  </nav>
+</aside>

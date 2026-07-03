@@ -1,0 +1,17 @@
+.words-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+
+  &__title {
+    margin: 0;
+    font-size: var(--fs-h2);
+    font-weight: 600;
+  }
+
+  &__tabs {
+    display: flex;
+    gap: var(--space-2xs);
+  }
+}

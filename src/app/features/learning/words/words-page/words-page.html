@@ -1,0 +1,31 @@
+<section class="words-page">
+  <h1 class="words-page__title">Слова</h1>
+
+  <div class="words-page__tabs">
+    <button
+      class="toggle"
+      type="button"
+      [class.toggle--active]="activeTab() === 'table'"
+      [attr.aria-pressed]="activeTab() === 'table'"
+      (click)="setTab('table')"
+    >
+      Таблица
+    </button>
+
+    <button
+      class="toggle"
+      type="button"
+      [class.toggle--active]="activeTab() === 'trainer'"
+      [attr.aria-pressed]="activeTab() === 'trainer'"
+      (click)="setTab('trainer')"
+    >
+      Тренажёр
+    </button>
+  </div>
+
+  @if (activeTab() === 'table') {
+    <app-words-table />
+  } @else {
+    <app-words-trainer />
+  }
+</section>

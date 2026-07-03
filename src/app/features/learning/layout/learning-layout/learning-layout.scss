@@ -1,0 +1,14 @@
+.learning-layout {
+  display: flex;
+  min-height: 100vh;
+
+  &__aside {
+    flex-shrink: 0;
+    width: 14em;
+  }
+
+  &__main {
+    flex-grow: 1;
+    min-width: 0;
+  }
+}

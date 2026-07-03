@@ -1,0 +1,29 @@
+.words-table {
+  &__empty {
+    color: var(--color-text-secondary);
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--fs-body);
+
+    th,
+    td {
+      padding: var(--space-xs) var(--space-sm);
+      border-bottom: var(--border-width) solid var(--color-border);
+      text-align: left;
+    }
+
+    th {
+      color: var(--color-text-secondary);
+      font-size: var(--fs-caption);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+  }
+
+  &__at {
+    margin-left: var(--space-2xs);
+  }
+}

@@ -1,0 +1,92 @@
+<div class="trainer">
+  <div class="trainer__mode">
+    <button
+      class="toggle"
+      type="button"
+      [class.toggle--active]="mode() === 'translation'"
+      [attr.aria-pressed]="mode() === 'translation'"
+      (click)="setMode('translation')"
+    >
+      Перевод
+    </button>
+
+    <button
+      class="toggle"
+      type="button"
+      [class.toggle--active]="mode() === 'gender'"
+      [attr.aria-pressed]="mode() === 'gender'"
+      (click)="setMode('gender')"
+    >
+      Род
+    </button>
+  </div>
+
+  @if (words().length === 0) {
+    <p class="trainer__empty">Слов пока нет — запустите синхронизацию с Notion.</p>
+  } @else if (totalCount() === 0) {
+    <p class="trainer__empty">Для этого режима подходящих слов нет.</p>
+  } @else if (currentWord(); as word) {
+    <div class="card trainer__card">
+      <p class="trainer__term">{{ word.term }}</p>
+
+      @if (mode() === 'gender') {
+        <div class="trainer__answers">
+          @for (gender of genders; track gender) {
+            <button
+              class="btn btn--secondary"
+              type="button"
+              [disabled]="revealed()"
+              (click)="guessGender(gender)"
+            >
+              {{ gender }}
+            </button>
+          }
+        </div>
+
+        @if (revealed()) {
+          <p class="trainer__feedback">
+            @if (lastAnswerCorrect()) {
+              <span class="badge badge--success">Верно</span>
+            } @else {
+              <span class="badge">Неверно — {{ word.gender }}</span>
+            }
+          </p>
+
+          <button class="btn btn--primary" type="button" (click)="next()">Далее</button>
+        }
+      } @else {
+        @if (!revealed()) {
+          <button class="btn btn--secondary" type="button" (click)="reveal()">Показать перевод</button>
+        } @else {
+          <p class="trainer__translation">{{ word.translation }}</p>
+
+          @if (word.example) {
+            <p class="trainer__example">
+              {{ word.example }}
+              @if (word.exampleTranslation) {
+                <br />
+                <span class="trainer__example-translation">{{ word.exampleTranslation }}</span>
+              }
+            </p>
+          }
+
+          <div class="trainer__answers">
+            <button class="btn btn--primary" type="button" (click)="markSelf(true)">Знал</button>
+            <button class="btn btn--secondary" type="button" (click)="markSelf(false)">Не знал</button>
+          </div>
+        }
+      }
+    </div>
+
+    <p class="trainer__score">
+      Счёт: {{ score().correct }} / {{ score().total }} · Осталось повторить:
+      {{ availableWords().length }} / {{ totalCount() }}
+    </p>
+  } @else {
+    <div class="card trainer__card">
+      <p class="trainer__done">Все слова в этом режиме уже пройдены.</p>
+
+      <button class="btn btn--secondary" type="button" (click)="resetProgress()">Сбросить прогресс</button>
+    </div>
+  }
+</div>

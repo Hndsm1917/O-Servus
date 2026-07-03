@@ -1,0 +1,62 @@
+.trainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 24em;
+
+  &__mode {
+    display: flex;
+    gap: var(--space-2xs);
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    text-align: center;
+  }
+
+  &__term {
+    margin: 0;
+    font-size: var(--fs-h3);
+    font-weight: 600;
+  }
+
+  &__translation {
+    margin: 0;
+    font-size: var(--fs-h5);
+  }
+
+  &__example {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-caption);
+    font-style: italic;
+  }
+
+  &__example-translation {
+    font-style: normal;
+  }
+
+  &__answers {
+    display: flex;
+    gap: var(--space-xs);
+  }
+
+  &__feedback {
+    margin: 0;
+  }
+
+  &__done {
+    margin: 0;
+    font-size: var(--fs-body-lg);
+    font-weight: 600;
+  }
+
+  &__score,
+  &__empty {
+    color: var(--color-text-secondary);
+    font-size: var(--fs-caption);
+  }
+}
