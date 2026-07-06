@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+
+import { LocaleService } from '../../core/i18n/locale.service';
 
 interface ColorSwatch {
   label: string;
@@ -13,6 +15,8 @@ interface ColorSwatch {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StyleGuide {
+  protected readonly locale = inject(LocaleService);
+
   protected readonly redSwatches: ColorSwatch[] = [
     { label: '50', token: '--color-red-50', dark: false },
     { label: '100', token: '--color-red-100', dark: false },

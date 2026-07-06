@@ -1,29 +1,25 @@
 <div class="words-table">
   @if (words().length === 0) {
-    <p class="words-table__empty">Слов пока нет — запустите синхронизацию с Notion.</p>
+    <p class="words-table__empty">{{ locale.t().wordsShared.noWordsYet }}</p>
   } @else {
     <table class="words-table__table">
+      <caption class="sr-only">{{ locale.t().wordsPage.title }}</caption>
       <thead>
         <tr>
-          <th>Слово</th>
-          <th>Род</th>
-          <th>Перевод</th>
-          <th>Часть речи</th>
-          <th>Юнит</th>
+          <th scope="col">{{ locale.t().wordsTable.colTerm }}</th>
+          <th scope="col">{{ locale.t().wordsTable.colGender }}</th>
+          <th scope="col">{{ locale.t().wordsTable.colTranslation }}</th>
+          <th scope="col">{{ locale.t().wordsTable.colPartOfSpeech }}</th>
+          <th scope="col">{{ locale.t().wordsTable.colUnit }}</th>
         </tr>
       </thead>
       <tbody>
         @for (word of words(); track word.id) {
-          <tr>
-            <td>
-              {{ word.term }}
-              @if (word.isAustrian) {
-                <span class="badge badge--warning words-table__at" title="Австриазм">AT</span>
-              }
-            </td>
+          <tr class="words-table__row" [ngClass]="{ 'words-table__row--at': word.isAustrian }">
+            <td lang="de">{{ word.term }}</td>
             <td>
               @if (word.gender) {
-                <span class="badge badge--neutral">{{ word.gender }}</span>
+                <span class="badge badge--neutral" lang="de">{{ word.gender }}</span>
               }
             </td>
             <td>{{ word.translation }}</td>

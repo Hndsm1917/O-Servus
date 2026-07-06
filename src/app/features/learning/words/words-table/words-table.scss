@@ -23,7 +23,10 @@
     }
   }
 
-  &__at {
-    margin-left: var(--space-2xs);
+  &__row {
+    &--at {
+      color: var(--text-danger);
+      background: var(--bg-danger);
+    }
   }
 }

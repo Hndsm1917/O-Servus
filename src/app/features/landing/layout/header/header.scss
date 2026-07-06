@@ -17,11 +17,6 @@
     gap: var(--space-md);
   }
 
-  &__controls {
-    display: flex;
-    gap: var(--space-2xs);
-  }
-
   &__link {
     color: var(--color-text-secondary);
     font-size: var(--fs-body);

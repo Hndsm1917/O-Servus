@@ -1,4 +1,5 @@
 export type WordGender = 'der' | 'die' | 'das' | null;
+export type WordArticle = 'der' | 'die' | 'das' | null;
 
 /**
  * Flattened shape written by scripts/sync-notion-words.mjs into
@@ -11,6 +12,7 @@ export interface Word {
   term: string;
   plural: string | null;
   gender: WordGender;
+  article: WordGender;
   partOfSpeech: string | null;
   translation: string;
   example: string | null;

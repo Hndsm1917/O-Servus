@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
-import { ThemeService } from '../../../../core/theme/theme.service';
+import { LocaleService } from '../../../../core/i18n/locale.service';
 
 @Component({
   selector: 'app-header',
@@ -11,9 +11,7 @@ import { ThemeService } from '../../../../core/theme/theme.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Header {
-  protected readonly theme = inject(ThemeService);
+  protected readonly locale = inject(LocaleService);
 
-  protected readonly links = [
-    { path: '/', label: 'Home' },
-  ];
+  protected readonly links = computed(() => [{ path: '/', label: this.locale.t().header.navHome }]);
 }

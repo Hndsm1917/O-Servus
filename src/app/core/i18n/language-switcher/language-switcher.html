@@ -1,0 +1,13 @@
+<div class="language-switcher" role="group" [attr.aria-label]="localeService.t().languageSwitcher.ariaLabel">
+  @for (item of locales; track item.code) {
+    <button
+      class="toggle"
+      type="button"
+      [class.toggle--active]="localeService.locale() === item.code"
+      [attr.aria-pressed]="localeService.locale() === item.code"
+      (click)="localeService.setLocale(item.code)"
+    >
+      {{ item.label }}
+    </button>
+  }
+</div>

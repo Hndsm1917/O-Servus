@@ -1,11 +1,42 @@
 <aside class="aside">
   <span class="aside__logo">Ö-Servus</span>
 
-  <nav class="aside__nav">
-    @for (link of links; track link.path) {
-      <a class="aside__link" routerLinkActive="aside__link--active" [routerLink]="link.path">{{
-        link.label
-      }}</a>
+  <nav class="aside__nav" [attr.aria-label]="locale.t().a11y.asideNavLabel">
+    @for (link of links(); track link.path) {
+      <a
+        class="aside__link"
+        routerLinkActive="aside__link--active"
+        #rla="routerLinkActive"
+        [attr.aria-current]="rla.isActive ? 'page' : null"
+        [routerLink]="link.path"
+        >{{ link.label }}</a
+      >
     }
   </nav>
+
+  <div class="aside__settings">
+    <app-language-switcher />
+
+    <div class="aside__toggle-group">
+      <button
+        class="toggle"
+        type="button"
+        [class.toggle--active]="theme.theme() === 'dark'"
+        [attr.aria-pressed]="theme.theme() === 'dark'"
+        (click)="theme.toggleTheme()"
+      >
+        {{ theme.theme() === 'dark' ? locale.t().themeToggle.dark : locale.t().themeToggle.light }}
+      </button>
+
+      <button
+        class="toggle"
+        type="button"
+        [class.toggle--active]="theme.contrast() === 'high'"
+        [attr.aria-pressed]="theme.contrast() === 'high'"
+        (click)="theme.toggleContrast()"
+      >
+        {{ locale.t().themeToggle.contrast }}
+      </button>
+    </div>
+  </div>
 </aside>

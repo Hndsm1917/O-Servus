@@ -38,4 +38,18 @@
       background: var(--bg-accent);
     }
   }
+
+  &__settings {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-top: auto;
+    padding-top: var(--space-md);
+    border-top: var(--border-width) solid var(--color-border);
+  }
+
+  &__toggle-group {
+    display: flex;
+    gap: var(--space-2xs);
+  }
 }

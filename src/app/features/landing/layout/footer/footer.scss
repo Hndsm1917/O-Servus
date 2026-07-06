@@ -13,8 +13,18 @@
   }
 
   &__langs {
-    background: var(--gradient-hero);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
     width: 100%;
     padding: var(--space-sm) var(--space-lg);
+    color: var(--color-text-inverse);
+    background: var(--gradient-hero);
+  }
+
+  &__heading {
+    margin: 0;
+    font-size: var(--fs-body);
+    font-weight: 600;
   }
 }

@@ -1,5 +1,5 @@
 <section class="words-page">
-  <h1 class="words-page__title">Слова</h1>
+  <h1 class="words-page__title">{{ locale.t().wordsPage.title }}</h1>
 
   <div class="words-page__tabs">
     <button
@@ -9,7 +9,7 @@
       [attr.aria-pressed]="activeTab() === 'table'"
       (click)="setTab('table')"
     >
-      Таблица
+      {{ locale.t().wordsPage.tabTable }}
     </button>
 
     <button
@@ -19,7 +19,7 @@
       [attr.aria-pressed]="activeTab() === 'trainer'"
       (click)="setTab('trainer')"
     >
-      Тренажёр
+      {{ locale.t().wordsPage.tabTrainer }}
     </button>
   </div>
 

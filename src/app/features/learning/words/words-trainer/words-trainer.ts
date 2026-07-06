@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, effect, inject, signal, untracked } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 
+import { LocaleService } from '../../../../core/i18n/locale.service';
 import type { Word, WordGender } from '../models/word.model';
 import { WordsProgressService } from '../words-progress.service';
 import { WordsService } from '../words.service';
@@ -17,6 +18,7 @@ export class WordsTrainer {
   private readonly wordsService = inject(WordsService);
   private readonly progress = inject(WordsProgressService);
 
+  protected readonly locale = inject(LocaleService);
   protected readonly words = toSignal(this.wordsService.getWords(), { initialValue: [] });
 
   protected readonly genders: WordGender[] = ['der', 'die', 'das'];
